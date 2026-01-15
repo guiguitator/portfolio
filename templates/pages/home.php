@@ -1,0 +1,79 @@
+<section id="hero">
+    <div class="hero-image">
+        <img src="./assets/images/portrait.png" alt="Portrait de Meunier Guillaume" />
+    </div>
+    <div>
+        <h1 class="hero-title">Meunier Guillaume</h1>
+        <p>
+            Bacon ipsum dolor amet rump porchetta short loin jerky. Bacon frankfurter
+            pig burgdoggen meatloaf. Leberkas pork belly swine chislic porchetta tail.
+        </p>
+        <div class="hero-actions">
+            <a href="/projects" class="btn btn-primary">Voir les projets</a>
+            <a href="/contact" class="btn">Me contacter</a>
+        </div>
+    </div>
+</section>
+<section id="about-me">
+    <h2>À propos de moi</h2>
+    <p>
+        Bacon ipsum dolor amet rump porchetta short loin jerky. Bacon frankfurter pig burgdoggen
+        meatloaf landjaeger chislic capicola cupim kevin sausage. Pig short loin tenderloin, chicken
+        buffalo prosciutto rump. Leberkas pork belly swine chislic porchetta tail tongue chuck strip
+        steak bacon pork ham hock. Porchetta jerky pork belly short ribs pig spare ribs.
+    </p>
+</section>
+<section id="projects">
+    <h2>Projets séléctionnés</h2>
+    <div class="project-card-wrapper">
+        <?php
+            $projects = $projectService->getFeaturedProjects();
+            
+            if (sizeof($projects) > 0) {
+                foreach ($projects as $project) {
+                    include PROJECT_ROOT . '/templates/partials/_project_card.php';
+                }
+            } else {
+                echo "<p>Aucun projet à afficher pour le moment.</p>";
+            }
+        ?>
+    </div>
+</section>
+<section id="contact">
+    <h2>Contactez-moi</h2>
+    <form class="contact-form" action="/contact" method="POST">
+        <div>
+            <label for="form-username">Votre Nom</label>
+            <input type="text" name="form-username" id="form-username" placeholder="Paul Dupont"
+                minlength="3" maxlength="255" required />
+        </div>
+        <div>
+            <label for="form-email">Votre Email</label>
+            <input type="email" name="form-email" id="form-email" placeholder="paul.dupont@mail.com" required />
+        </div>
+        <div>
+            <label for="form-subject">Sujet</label>
+            <input type="text" name="form-subject" id="form-subject"
+                minlength="3" maxlength="255" required />
+        </div>
+        <div>
+            <label for="form-content">Message</label>
+            <textarea name="form-content" id="form-content" minlength="32" maxlength="1600" required></textarea>
+        </div>
+        <div style="display: block;">
+            <input type="submit" class="btn btn-primary" value="Envoyer">
+        </div>
+        <?php if (isset($_GET['state'])): ?>
+            <?php if ($_GET['state'] === 'error'): ?>
+                <div class="alert alert-error">
+                    Une erreur est survenue, le message n'a pas pu être envoyé.
+                </div>
+            <?php endif; ?>
+            <?php if ($_GET['state'] === 'success'): ?>
+                <div class="alert alert-success">
+                    Votre message a bien été envoyé.
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+    </form>
+</section>

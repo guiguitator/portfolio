@@ -1,0 +1,45 @@
+/*
+DROP DATABASE IF EXISTS portfolio;
+CREATE DATABASE portfolio CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE portfolio;
+*/
+
+CREATE TABLE projects (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    slug VARCHAR(64) NOT NULL UNIQUE,
+    caption VARCHAR(255) NOT NULL,
+    github_url VARCHAR(255),
+    documentation_url VARCHAR(255),
+    is_featured BOOLEAN DEFAULT FALSE,
+    content TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE tags (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(64) NOT NULL UNIQUE,
+    icon VARCHAR(64) NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE projects_tags (
+    project_id INTEGER NOT NULL,
+    tag_id INTEGER NOT NULL,
+    PRIMARY KEY (project_id, tag_id),
+    FOREIGN KEY (project_id) REFERENCES projects(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (tag_id) REFERENCES tags(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE messages (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    subject VARCHAR(255) NOT NULL,
+    content VARCHAR(1600) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
