@@ -37,17 +37,26 @@ section#hero {
 
 /* Contact section */
 
-.contact-form {
+/*
+ *  NOTE: The CSS for this form is a bit messy because I'm generating the form 
+ *  using Symfony and didn't want to create a template for it.
+ */
+
+form[name='message'] div#message {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.contact-form div {
+form[name='message'] div#message div {
     display: flex;
     flex-direction: column;
 }
 
-.contact-form label {
+form[name='message'] label {
     margin-bottom: 0.5rem;
+}
+
+div:not(#message):has(#message_send) {
+    display: block !important;
 }

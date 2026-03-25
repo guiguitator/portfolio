@@ -46,42 +46,20 @@
     </section>
     <section id="contact">
         <h2>Contactez-moi</h2>
-        <form class="contact-form" action="/contact" method="POST">
-            <div>
-                <label for="form-username">Votre Nom</label>
-                <input type="text" name="form-username" id="form-username" placeholder="Paul Dupont"
-                    minlength="3" maxlength="255" required />
-            </div>
-            <div>
-                <label for="form-email">Votre Email</label>
-                <input type="email" name="form-email" id="form-email" placeholder="paul.dupont@mail.com" required />
-            </div>
-            <div>
-                <label for="form-subject">Sujet</label>
-                <input type="text" name="form-subject" id="form-subject"
-                    minlength="3" maxlength="255" required />
-            </div>
-            <div>
-                <label for="form-content">Message</label>
-                <textarea name="form-content" id="form-content" minlength="32" maxlength="1600" required></textarea>
-            </div>
-            <div style="display: block;">
-                <input type="submit" class="btn btn-primary" value="Envoyer">
-            </div>
-            {#
-            <?php if (isset($_GET['state'])): ?>
-                <?php if ($_GET['state'] === 'error'): ?>
-                    <div class="alert alert-error">
-                        Une erreur est survenue, le message n'a pas pu être envoyé.
-                    </div>
-                <?php endif; ?>
-                <?php if ($_GET['state'] === 'success'): ?>
-                    <div class="alert alert-success">
-                        Votre message a bien été envoyé.
-                    </div>
-                <?php endif; ?>
-            <?php endif; ?>
-            #}
-        </form>
+
+        {{ form(message_form) }}
+        
+        <div style="margin-top: 1rem;">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('danger') %}
+                <div class="alert alert-error">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
     </section>
 {% endblock %}

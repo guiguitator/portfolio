@@ -1,5 +1,13 @@
 @startuml class_diagram
 
+entity Message {
+    id: int
+    senderName: string
+    senderEmail: string
+    subject: string
+    content: string
+}
+
 entity Project {
     id: int
     name: string

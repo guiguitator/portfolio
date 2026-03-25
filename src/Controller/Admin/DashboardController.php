@@ -28,11 +28,13 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-table-columns');
+        yield MenuItem::section('Boîte de réception');
+        yield MenuItem::linkTo(MessageCrudController::class, 'Messages', 'fas fa-envelope');
         yield MenuItem::section('Contenus');
         yield MenuItem::linkTo(ProjectCrudController::class, 'Projets', 'fas fa-briefcase');
         yield MenuItem::linkTo(TagCrudController::class, 'Tags', 'fas fa-tag');
         yield MenuItem::section('Autres');
-        yield MenuItem::linkToRoute('Accueil', 'fas fa-home', 'app_home_index');
+        yield MenuItem::linkToRoute('Accueil', 'fas fa-home', 'app_home');
         yield MenuItem::linkToLogout('Déconnexion', 'fas fa-right-from-bracket');
     }
 }
