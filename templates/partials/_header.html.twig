@@ -1,0 +1,25 @@
+<header>
+    <div class="header-container container">
+        <div class="header-title">Meunier Guillaume</div>
+        <div>
+            <!-- Desktop -->
+            <div id="desktop-menu" class="visible-desktop">
+                {% include 'partials/_navigation.html.twig' %}
+            </div>
+            <!-- Mobile -->
+            <div class="mobile-menu-icon visible-mobile">
+                <a id="mobile-open-menu"><i class="bi bi-list"></i></a>
+            </div>
+            <div id="mobile-menu" class="visible-mobile">
+                <div class="mobile-menu-wrapper">
+                    
+                    {% include 'partials/_navigation.html.twig' %}
+
+                    <div class="mobile-menu-icon visible-mobile">
+                        <a id="mobile-close-menu"><i class="bi bi-x-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

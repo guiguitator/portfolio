@@ -1,0 +1,39 @@
+#project-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+@media (max-width: 400px) {
+    #project-header {
+        justify-content: center;
+    }
+}
+
+#project-header img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+    pointer-events: none;
+}
+
+.project-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-details-title {
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 0 !important;
+}
+
+.project-details-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}

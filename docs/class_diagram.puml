@@ -1,0 +1,29 @@
+@startuml class_diagram
+
+entity Project {
+    id: int
+    name: string
+    caption: string
+    githubUrl: ?string
+    documentationUrl: ?string
+    content: string
+    featured: bool
+    createdAt: DateTimeImmutable
+    updatedAt: DateTimeImmutable
+}
+
+entity Tag {
+    id: int
+    name: string
+}
+
+entity User {
+    id: int
+    email: string
+    password: string
+    roles: string[]
+}
+
+Project "*" -- "*" Tag 
+
+@enduml

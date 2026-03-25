@@ -1,0 +1,18 @@
+/* Tags */
+
+.tag {
+    display: inline-block;
+    border: 2px solid #a3afc3;
+    font-weight: 500;
+    color: #a3afc3;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.25rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.tag:hover {
+    color: #808999;
+    transform: translateY(-5%);
+}

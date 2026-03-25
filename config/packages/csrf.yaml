@@ -1,0 +1,13 @@
+# Enable stateless CSRF protection for forms and logins/logouts
+framework:
+    form:
+        csrf_protection:
+            token_id: submit
+
+    csrf_protection:
+        stateless_token_ids:
+            # FIXME: Disable for now because a CSRF error is triggered when 
+            # saving an entity in the EasyAdmin panel:
+            # - submit
+            - authenticate
+            - logout

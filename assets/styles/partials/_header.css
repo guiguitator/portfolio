@@ -1,0 +1,44 @@
+/* Header */
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-title {
+    color: var(--color-accent);
+    font-weight: 600;
+    letter-spacing: -0.01rem;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links {
+    display: flex;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    gap: 1.5rem;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-links a:hover {
+    color: var(--color-main);
+}
+
+.nav-links .nav-icons-container {
+    display: flex;
+    gap: 2rem;
+    margin-left: 0.5rem;
+}
+
+.nav-icons-container a {
+    font-size: 1.5rem;
+    line-height: 0;
+}

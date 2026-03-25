@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ project.name }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/pages/project_details.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section id="project-header">
+        <img src="{{ asset('uploads/projects/' ~ project.image) }}">
+        
+        <div class="project-detail">
+            <h1 class="project-detail-title">{{ project.name }}</h1>
+            <p class="project-detail-caption">{{ project.caption }}</p>
+
+            <div class="project-detail-tags">
+                {% for tag in project.tags %}
+                    {% include 'partials/_tag.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="project-detail-content">
+        <p>{{ project.content|raw }}</p>
+    </section>
+{% endblock %}
