@@ -13,6 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class ProjectCrudController extends AbstractCrudController
 {
@@ -25,7 +26,8 @@ class ProjectCrudController extends AbstractCrudController
     {
         return $crud
             ->setEntityLabelInSingular('Projet')
-            ->setEntityLabelInPlural('Projets');
+            ->setEntityLabelInPlural('Projets')
+            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig');
     }
 
     public function configureFields(string $pageName): iterable
@@ -52,6 +54,7 @@ class ProjectCrudController extends AbstractCrudController
         yield FormField::addColumn(6);
         yield FormField::addFieldset('Contenu', 'fas fa-file-pen');
         yield TextEditorField::new('content', 'Description')
+            ->setFormType(CKEditorType::class)
             ->hideOnIndex();
     }
 }
