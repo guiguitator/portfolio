@@ -3,18 +3,25 @@
 {% block title %}Projets{% endblock %}
 
 {% block stylesheets %}
-    {# <link rel="stylesheet" href="{{ asset('styles/pages/projects.css') }}"> #}
+    <link rel="stylesheet" href="{{ asset('styles/pages/projects.css') }}">
 {% endblock %}
 
 {% block body %}
-    <section>
+    <section class="section-projects-header">
         <h1>Projets</h1>
-        <p>
-            Bacon ipsum dolor amet rump porchetta short loin jerky. Bacon frankfurter pig burgdoggen
-            meatloaf landjaeger chislic capicola cupim kevin sausage. Pig short loin tenderloin, chicken
-            buffalo prosciutto rump. Leberkas pork belly swine chislic porchetta tail tongue chuck strip
-            steak bacon pork ham hock. Porchetta jerky pork belly short ribs pig spare ribs.
-        </p>
+        <div class="section-projects-header-content">
+            <p>
+                Bacon ipsum dolor amet rump porchetta short loin jerky. Bacon frankfurter pig burgdoggen
+                meatloaf landjaeger chislic capicola cupim kevin sausage. Pig short loin tenderloin, chicken
+                buffalo prosciutto rump. Leberkas pork belly swine chislic porchetta tail tongue chuck strip
+                steak bacon pork ham hock. Porchetta jerky pork belly short ribs pig spare ribs.
+            </p>
+            {% if current_tag is not empty %}
+                <p>
+                    Résultat(s) pour le tag : <strong>{{ current_tag }}</strong>
+                </p>
+            {% endif %}
+        </div>
     </section>
     <section class="section-projects-list">
         <div class="project-card-wrapper">
