@@ -1,5 +1,7 @@
 import './stimulus_bootstrap.js';
 
+console.log('App JS loaded');
+
 /*
 const openMenuButton = document.getElementById('mobile-open-menu');
 const closeMenuButton = document.getElementById('mobile-close-menu');
