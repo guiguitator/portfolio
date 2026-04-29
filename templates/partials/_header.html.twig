@@ -1,22 +1,28 @@
 <header>
     <div class="header-container container">
         <div class="header-title">Meunier Guillaume</div>
-        <div>
+        <div data-controller="menu">
             <!-- Desktop -->
             <div id="desktop-menu" class="visible-desktop">
                 {% include 'partials/_navigation.html.twig' %}
             </div>
+
             <!-- Mobile -->
             <div class="mobile-menu-icon visible-mobile">
-                <a id="mobile-open-menu"><i class="bi bi-list"></i></a>
+                <a data-action="click->menu#openMenu" id="mobile-open-menu">
+                    <i class="bi bi-list"></i>
+                </a>
             </div>
-            <div id="mobile-menu" class="visible-mobile">
+
+            <div data-menu-target="menu" id="mobile-menu" class="visible-mobile">
                 <div class="mobile-menu-wrapper">
                     
                     {% include 'partials/_navigation.html.twig' %}
 
                     <div class="mobile-menu-icon visible-mobile">
-                        <a id="mobile-close-menu"><i class="bi bi-x-lg"></i></a>
+                        <a data-action="click->menu#closeMenu" id="mobile-close-menu">
+                            <i class="bi bi-x-lg"></i>
+                        </a>
                     </div>
                 </div>
             </div>
