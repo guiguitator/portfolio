@@ -1,12 +1,5 @@
 <article class="project-card">
 
-    {#
-    <?php if ($has_icon): ?>
-        <div class="project-card-icon">
-            <img src="<?= htmlspecialchars($icon_path); ?>" />
-        </div>
-    <?php endif; ?>
-    #}
     {% if project.image is not null %}
         <div class="project-card-icon">
             <img src="{{ asset('uploads/projects/' ~ project.image) }}" alt="{{ project.name|default('Projet') }}" />
@@ -29,11 +22,19 @@
     <div class="project-card-actions">
         <a href="{{ path('app_project_details', {'id': project.id }) }}" class="btn btn-primary">Voir plus</a>
 
-        {% if project.githubUrl is not null %}
-            <a class="project-card-github" target="_blank" href="{{ project.githubUrl }}">
-                <i class="bi bi-github"></i>
-            </a>
-        {% endif %}
+        <div class="project-card-links">
+            {% if project.githubUrl is not null %}
+                <a class="project-card-link" target="_blank" href="{{ project.githubUrl }}" rel="noopener noreferrer">
+                    <i class="bi bi-github"></i>
+                </a>
+            {% endif %}
 
+            {% if project.documentationUrl is not null %}
+                <a class="project-card-link" target="_blank" href="{{ project.documentationUrl }}" rel="noopener noreferrer">
+                    <i class="bi bi-book-fill"></i>
+                </a>
+            {% endif %}
+        </div>
     </div>
+    
 </article>

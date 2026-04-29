@@ -8,21 +8,39 @@
 
 {% block body %}
     <section id="project-header">
-        <img src="{{ asset('uploads/projects/' ~ project.image) }}">
+        {% if project.image is not null %}
+            <img class="project-details-image" src="{{ asset('uploads/projects/' ~ project.image) }}">
+        {% else %}
+            <div class="project-details-image"></div>
+        {% endif %}
         
-        <div class="project-detail">
-            <h1 class="project-detail-title">{{ project.name }}</h1>
-            <p class="project-detail-caption">{{ project.caption }}</p>
+        <div class="project-details">
+            <h1 class="project-details-title">{{ project.name }}</h1>
+            <p class="project-details-caption">{{ project.caption }}</p>
 
-            <div class="project-detail-tags">
+            <div class="project-details-tags">
                 {% for tag in project.tags %}
                     {% include 'partials/_tag.html.twig' %}
                 {% endfor %}
             </div>
+
+            <div class="project-details-links">
+                {% if project.githubUrl is not null %}
+                    <a class="project-details-link" target="_blank" href="{{ project.githubUrl }}" rel="noopener noreferrer">
+                        <i class="bi bi-github"></i>
+                    </a>
+                {% endif %}
+
+                {% if project.documentationUrl is not null %}
+                    <a class="project-details-link" target="_blank" href="{{ project.documentationUrl }}" rel="noopener noreferrer">
+                        <i class="bi bi-book-fill"></i>
+                    </a>
+                {% endif %}
+        </div>
         </div>
     </section>
 
-    <section class="project-detail-content">
+    <section class="project-details-content">
         <p>{{ project.content|raw }}</p>
     </section>
 {% endblock %}
