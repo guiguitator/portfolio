@@ -59,3 +59,7 @@ php bin/console doctrine:fixtures:load
 ```
 DATABASE_URL="mysql://username:password@127.0.0.1:3306/portfolio?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
 ```
+
+## Production deployment
+
+For production deployment, please refer to [this](docs/production_deployment.md) document.
