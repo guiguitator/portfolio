@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Message;
 use App\Form\MessageType;
+use App\Repository\TagRepository;
 use App\Service\ProjectService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,7 +16,8 @@ final class AppController extends AbstractController
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
-        private ProjectService $projectService
+        private ProjectService $projectService,
+        private TagRepository $tagRepository
     ) {}
 
     #[Route('/', name: 'app_home_index')]
@@ -51,10 +53,31 @@ final class AppController extends AbstractController
     }
 
     #[Route('/projects', name: 'app_projects')]
-    public function projects(): Response
+    public function projects(Request $request): Response
     {
+        $tagName = $request->query->get('tag');
+        
+        if ($tagName) {
+            $tag = $this->tagRepository->findOneBy(['name' => $tagName]);
+
+            // If the tag exists, retrieve the associated projects
+            if ($tag) {
+                $projects = $this->projectService->getProjectsByTag($tag);
+            } 
+            // otherwise, return an empty array
+            else {
+                $projects = [];
+            }
+        } 
+
+        // If no tags are specified, display all projects
+        else {
+            $projects = $this->projectService->getAllProjects();
+        }
+
         return $this->render('app/projects.html.twig', [
-            'projects' => $this->projectService->getAllProjects()
+            'projects' => $projects,
+            'current_tag' => $tagName
         ]);
     }
 
@@ -62,7 +85,7 @@ final class AppController extends AbstractController
     public function projectDetails(int $id): Response
     {
         return $this->render('app/project_details.html.twig', [
-            'project' => $this->projectService->getProjectById($id)
+            'project' => $this->projectService->getProjectById($id),
         ]);
     }
 }

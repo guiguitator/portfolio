@@ -1,4 +1,5 @@
-<div class="tag">
-    {# <i class="<?= $tag->getIcon(); ?>"></i> #}
-    <span>{{ tag.name }}</span>
-</div>
+<a href="{{ path('app_projects', {'tag': tag.name}) }}" class="tag-link">
+    <div class="tag">
+        <span>{{ tag.name }}</span>
+    </div>
+</a>
