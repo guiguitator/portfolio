@@ -31,7 +31,7 @@ class ProjectCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield FormField::addColumn(4);
-        yield FormField::addFieldset('Détails', 'fas fa-circle-info');
+        // yield FormField::addFieldset('Détails', 'fas fa-circle-info');
         yield IdField::new('id')
                 ->hideOnForm();
         yield TextField::new('name', 'Nom');
@@ -50,7 +50,7 @@ class ProjectCrudController extends AbstractCrudController
             ->hideOnIndex();
 
         yield FormField::addColumn(8);
-        yield FormField::addFieldset('Contenu', 'fas fa-file-pen');
+        // yield FormField::addFieldset('Contenu', 'fas fa-file-pen');
         yield TextEditorField::new('content', 'Description')
             ->hideOnIndex();
     }

@@ -28,6 +28,7 @@
     border: 1px solid var(--border);
     pointer-events: none;
     background: rgba(0, 0, 0, 0.025);
+    object-fit: contain;
 }
 
 .project-details {
