@@ -64,3 +64,36 @@
 .project-details-link:hover {
     opacity: 0.9;
 }
+
+
+/* Project Details content */
+
+.project-details-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-details-content h1 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-details-content pre {
+    font-family: 'Courier New', Courier, monospace;
+    background: var(--color-main);
+    color: var(--background);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+}
+
+.project-details-content blockquote {
+    border-left: 4px solid var(--color-muted);
+    padding-left: 1rem;
+    color: var(--color-muted);
+}
+
+.project-details-content ul, .project-details-content ol {
+    padding-left: 1.5rem;
+}
