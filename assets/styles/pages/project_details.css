@@ -97,3 +97,8 @@
 .project-details-content ul, .project-details-content ol {
     padding-left: 1.5rem;
 }
+
+.project-details-content a {
+    color: var(--color-muted);
+    text-decoration: underline;
+}
